@@ -255,5 +255,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //coin collision
+            if(other.gameObject.tag == "Coin")
+            {
+                print("Coin");
+                Destroy(other.gameObject);
+            }
+        }
     }
 }
