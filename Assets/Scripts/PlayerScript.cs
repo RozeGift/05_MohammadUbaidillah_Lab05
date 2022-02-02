@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour
 
     public Text scoreText;
     public Text timerText;
+
+    public GameObject particles;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,9 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.tag == "Coin")
         {           
             score += 10f;
-            Destroy(other.gameObject);     
+            var clone = Instantiate(particles, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+            Destroy(clone, 1.0f);
         }
 
         if(other.gameObject.tag == "Water")
